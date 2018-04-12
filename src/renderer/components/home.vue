@@ -90,7 +90,7 @@
   import fs from 'fs'
   import AdmZip from 'adm-zip'
   import {shell} from 'electron'
-  import PDFMerge from '../easy-pdf-merge/index'
+  import PDFMerge from './easy-pdf-merge/index'
   import rimraf from 'rimraf'
 
   export default {

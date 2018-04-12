@@ -1,6 +1,6 @@
 {
   "name": "ky-fp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "author": "roy <xf.radish@gmail.com>",
   "description": "An electron-vue project",
   "license": null,
@@ -17,7 +17,7 @@
     "postinstall": ""
   },
   "build": {
-    "productName": "ky-fp",
+    "productName": "跨越速运-发票工具",
     "appId": "org.simulatedgreg.electron-vue",
     "directories": {
       "output": "build"
@@ -41,7 +41,10 @@
       ]
     },
     "mac": {
-      "icon": "build/icons/icon.icns"
+      "icon": "build/icons/icon.icns",
+      "extraResources": [
+        "static/pdfbox.jar"
+      ]
     },
     "win": {
       "icon": "build/icons/icon.ico"
