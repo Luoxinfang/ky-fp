@@ -171,7 +171,7 @@
                         rimraf(filePath, () => {
                           console.log('rimraf:', filename)
                         })
-                      } else if (!this.isPdfFile(filename)) {
+                      } else if (/^[._]\S*[.pdf]$/.test(filename) || !this.isPdfFile(filename)) {
                         fs.unlinkSync(filePath)
                       }
                     })
@@ -193,14 +193,17 @@
         let outPath = files[0].path.split('/')
         outPath.splice(outPath.length - 1, 1)
         outPath = outPath.join('/')
-        outPath = outPath + '/合并后的文件-' + +new Date() + '.pdf'
         for (let file of files) {
           pathList.push(file.path)
         }
+        if (pathList.length < 2) {
+          alert('最少需要选择2个文件')
+          return
+        }
         // console.log(pathList)
-        PDFMerge(pathList, outPath, (err) => {
+        PDFMerge(pathList, outPath + '/合并后的文件-' + +new Date() + '.pdf', (err) => {
           if (err) {
-            console.log(err)
+            alert(err)
           } else {
             shell.openItem(outPath)
           }
