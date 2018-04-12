@@ -90,7 +90,7 @@
   import fs from 'fs'
   import AdmZip from 'adm-zip'
   import {shell} from 'electron'
-  import PDFMerge from 'easy-pdf-merge'
+  import PDFMerge from '../easy-pdf-merge/index'
   import rimraf from 'rimraf'
 
   export default {
@@ -200,7 +200,14 @@
           alert('最少需要选择2个文件')
           return
         }
-        // console.log(pathList)
+        //Save as new file
+        // PDFMerge(pathList, {output: (outPath + '/合并后的文件-' + +new Date() + '.pdf')})
+        //   .then((buffer) => {
+        //     console.log(buffer)
+        //     shell.openItem(outPath)
+        //   })
+
+        console.log(pathList)
         PDFMerge(pathList, outPath + '/合并后的文件-' + +new Date() + '.pdf', (err) => {
           if (err) {
             alert(err)
